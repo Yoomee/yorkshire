@@ -1,0 +1,31 @@
+-content_for :head do
+  :javascript
+    $(document).ready(function() {
+      $('a[data-toggle="tab"]').on('show', function (e) {
+        var iframe = $('' + $(e.target).attr('href') + ' iframe');
+        var src = iframe.attr('src');
+        if (src !== iframe.contents().get(0).location.pathname){
+          iframe.attr('src',src);
+        }
+      });  
+    });
+.span12.center
+  #simulator
+    .tab-content
+      #info.tab-pane
+        %iframe{:src => mobile_pages_path, :width => 320, :height => 411, :frameborder => 0}
+      #news.tab-pane
+        %iframe{:src => mobile_pages_path, :width => 320, :height => 411, :frameborder => 0}
+      #collect.tab-pane.active
+        %iframe{:src => mobile_pages_path, :width => 320, :height => 411, :frameborder => 0}
+      #me.tab-pane
+        %iframe{:src => mobile_pages_path, :width => 320, :height => 411, :frameborder => 0}
+      #more.tab-pane
+        %iframe{:src => mobile_pages_path, :width => 320, :height => 411, :frameborder => 0}
+      
+    %ul#tab-bar.unstyled
+      %li=link_to("Fair", '#fair', :'data-toggle' => 'tab')
+      %li=link_to("News", '#news', :'data-toggle' => 'tab')
+      %li.active=link_to("Collect", '#collect', :'data-toggle' => 'tab')
+      %li=link_to("Me", '#me', :'data-toggle' => 'tab')
+      %li=link_to("More", '#more', :'data-toggle' => 'tab')

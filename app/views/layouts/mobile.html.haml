@@ -1,0 +1,19 @@
+!!!5
+%html
+  %head
+    %title
+      =Settings.site_name
+      ="- #{@page_title}" if @page_title.present?
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }      
+    =stylesheet_link_tag("mobile")
+    =stylesheet_link_tag("mobile@2x") if @retina
+    =javascript_include_tag("mobile")
+    =csrf_meta_tags
+    =yield :head
+    =google_analytics_js
+  -body_tag do
+    -if @page_title
+      =render('mobile/layouts/nav')
+    .navbar-spacer
+    =yield_with_bootstrap(render_flash, :container_class => 'container-fluid', :row_class => 'row-fluid')
+    =yield_with_bootstrap(yield, :container_class => 'container-fluid', :row_class => 'row-fluid')
