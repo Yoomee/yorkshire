@@ -1,0 +1,11 @@
+development:
+  bin_path: /usr/local/bin
+  min_prefix_len: 1
+production:
+  min_prefix_len: 1
+  port: 9312
+  config_file: /data/yorkshire/shared/production.sphinx.conf
+  searchd_file_path: /data/yorkshire/shared/sphinx
+  searchd_log_path: /data/yorkshire/shared/searchd.log
+  query_log_file: /data/yorkshire/shared/searchd.query.log
+  pid_file: /data/yorkshire/shared/searchd.production.pid
