@@ -1,4 +1,7 @@
 .container
   .row
     .center
-      =image_for(@photo, "300x391", :class => 'mt-1')
+      -if next_photo = @photo.next_photo
+        =link_to(image_for(@photo, "300x391", :class => 'mt-1'), mobile_photo_path(next_photo))
+      -else
+        =image_for(@photo, "300x391", :class => 'mt-1')
