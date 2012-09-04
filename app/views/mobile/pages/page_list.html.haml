@@ -3,7 +3,7 @@
     %span=@page
 
 .container-fluid.mt-1
-  -@page.children.each_with_index do |child, index|
+  -@page.children.order('position').each_with_index do |child, index|
     -num = app_link_offset(index)
     .row-fluid
       %div{:class => "span#{12 - num} offset#{num}"}
