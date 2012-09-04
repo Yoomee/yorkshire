@@ -6,8 +6,8 @@ module MobileHelper
   end  
   
   def active_tab_bar
-    return 'home' if @page.nil?
-    @page.slug == 'mobile-app' ? 'home' : 'info'
+    return nil if @page.nil?
+    @page.slug == 'app-welcome' ? 'home' : 'info'
   end
   
   def app_background_image_style

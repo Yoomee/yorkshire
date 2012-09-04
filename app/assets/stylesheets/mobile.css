@@ -218,7 +218,8 @@ a.page-link,
   opacity: 1;
 }
 .page-link,
-.page-show .page-parent a {
+.page-show .page-parent a,
+.page-show .page-parent span {
   padding: 10px 15px;
   color: white;
   background-color: #3DA1A1;
@@ -233,7 +234,8 @@ a.page-link,
 .page-show .page-parent {
   height: 110px;
 }
-.page-show .page-parent a {
+.page-show .page-parent a,
+.page-show .page-parent span {
   float: right;
 }
 .page-parent a:hover,

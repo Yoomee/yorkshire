@@ -1,0 +1,25 @@
+-if @page.slug == 'app-welcome'
+  .container.page-parent{:style => app_header_image_style}
+    %span{:style => "background-color:#{@page.app_link_color};"}
+      =@page
+-elsif parent = @page.parent
+  .container.page-parent{:style => app_header_image_style}
+    =link_to(parent, mobile_page_path(parent.id), :style => "background-color:#{parent.app_link_color};")
+
+.container-fluid
+  .row-fluid
+    .span12
+      %h1=@page.title
+      -if @page.image
+        =image_for_with_retina(@page, "288x", :class => "mb-1")
+      =raw(@page.text)
+  -unless @page.slug == 'app-welcome'
+    .row-fluid.mt-1
+      .span12
+        .share-links
+          =link_to("#", :class => "btn span12 mb-1") do
+            %i.icon-share
+            Share this
+          =link_to("#", :class => "btn span12") do
+            %i.icon-star
+            Add to favourites
