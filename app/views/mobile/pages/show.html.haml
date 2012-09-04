@@ -6,10 +6,11 @@
     =link_to(parent, mobile_page_path(parent.id), :style => "background-color:#{parent.app_link_color};")
     
 -if @page.children.present?
-  .container-fluid
-    -@page.children.each do |child|
+  .container-fluid.mt-1
+    -@page.children.each_with_index do |child, index|
+      -num = app_link_offset(index)
       .row-fluid
-        .span10.offset2
+        %div{:class => "span#{12 - num} offset#{num}"}
           =link_to(child, mobile_page_path(child.id), :class => 'page-link', :style => "background-color:#{child.app_link_color};")
 -else
   .container-fluid

@@ -31,6 +31,10 @@ module MobileHelper
     end
   end
   
+  def app_link_offset(num)
+    [1, 3, 2, 2, 3, 2][num]
+  end
+  
   def mobile_home_path
     if home_page = Page.find_by_slug('mobile-app')
       mobile_page_path(home_page.id)
