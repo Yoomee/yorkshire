@@ -13,20 +13,6 @@
  *= require_self
 */
 
-@font-face {
-	font-family: 'Apercu Bold';
-	src: local('Apercu-Bold'), url('http://dl.dropbox.com/u/292336/unseen/apercu_bold.otf');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'Apercu Regular';
-	src: local('Apercu-Regular'), url('http://dl.dropbox.com/u/292336/unseen/apercu_regular.otf');
-	font-weight: normal;
-	font-style: normal;
-}
-
-
 /*========== Bootstrap extensions ==========*/
 
 [class*="span"] img{
@@ -34,10 +20,6 @@
 }
 .span12 img{
   width:100%;
-}
-
-.icon-gray {
-  background-image: url("/assets/core/glyphicons-halflings-gray.png");
 }
 .radio {
   padding-left: 0;
@@ -120,13 +102,13 @@ h4,
 h5,
 h6,
  b, {
-  font-family: "Apercu Bold", "calibri", Arial, sans-serif;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   -webkit-font-smoothing: antialiased;
   font-weight: normal;
 }
 body, p,
 div, input {
-  font-family: "Apercu Regular", "calibri", Arial, sans-serif;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-weight: normal;
   font-size: 16px;
   line-height: 20px;
