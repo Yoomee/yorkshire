@@ -35,6 +35,7 @@ header_8.jpg: header_8-94cb3250a14999350e574f5db801be65.jpg
 header_9.jpg: header_9-2e544c3dda6a5b7aab821a115dc530e3.jpg
 iphone.png: iphone-62b01026a87c16a4804bcec20f6bb760.png
 map-screen.png: map-screen-b6442cd4781453e770468a42d5adca73.png
+splash-screen.png: splash-screen-f510039b5c7366596627ddb52658212e.png
 tab-bar-active.png: tab-bar-active-f3bab01dfefc5f34e0da987e5feae978.png
 tab-bar.png: tab-bar-31d4e7fcce8aa6b743d724e44374a3e4.png
 jquery-ui/ui-bg_diagonals-thick_18_b81900_40x40.png: jquery-ui/ui-bg_diagonals-thick_18_b81900_40x40-c3e0e1955420032feb67368f05648ded.png
@@ -59,8 +60,8 @@ jquery-ui-1.8.18.min.js: jquery-ui-1.8.18.min-dff515822d55d13f64b01beeeb73eaff.j
 jquery-ui-1.8.18.css: jquery-ui-1.8.18-525b8fc57478eb4d921d21ea053f2634.css
 jquery-ui.min.js: jquery-ui.min-449c6576aff2d5aef9fea2c0b667083b.js
 jquery.min.js: jquery.min-0e6aec4a17c753d4973b3b19ac39fac5.js
-application.js: application-b3a044faae2f1106d918b522fcb2eec1.js
+application.js: application-24296af6d00c787c2b1b85d0e50f53dc.js
 application.css: application-42cfc5f2c09c0891966eddf6dc2b0a0d.css
 mobile.css: mobile-352bfadbea3daad60734edde0c88b682.css
 mobile.js: mobile-dffb8c03d7035adca4dec14bf5244437.js
-simulator.css: simulator-b11196bf101654c462f450f16ba32b34.css
+simulator.css: simulator-88bac4b926ff36b221b3765a46d04e98.css
