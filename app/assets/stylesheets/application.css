@@ -51,3 +51,18 @@
 .fade_in.fade_four {-webkit-animation-delay: 0, 0.9s;}
 .fade_in.fade_five {-webkit-animation-delay: 0, 1.2s;}
 .fade_in.fade_six {-webkit-animation-delay: 0, 1.5s;}
+
+/*========== Page app images ==========*/
+
+.tab-pane#app_images .choices {
+  margin-top: 10px;
+}
+.tab-pane#app_images label.choice {
+  float: left;
+  margin-right: 40px;
+  padding: 0;
+  height: 140px;
+}
+.tab-pane#app_images label.choice input {
+  float: none;
+}

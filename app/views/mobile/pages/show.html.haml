@@ -8,5 +8,6 @@
   %h1=@page.title
   -if @page.parent.try(:slug) == "news"
     %p=@page.created_at.strftime("%e %B %Y")
-  =image_for_with_retina(@page, "288x", :class => "mb-1")
+  -if @page.image
+    =image_for_with_retina(@page, "288x", :class => "mb-1")
   =raw(@page.text)

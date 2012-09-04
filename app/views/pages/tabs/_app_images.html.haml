@@ -1,0 +1,8 @@
+=form.inputs do
+  .radio.control-group.optional
+    %label.control-label App background image
+    .choices.controls
+      -[*(1..15)].each do |num|
+        %label.choice.radio
+          =form.radio_button :app_background, num, :id => ""
+          =image_tag(Page::app_background_image_url(num), :width => 100)
