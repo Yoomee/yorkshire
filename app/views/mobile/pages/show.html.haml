@@ -1,13 +1,20 @@
 -if @page.children.present?
-  -@page.children.each do |child|
-    .row
-      .span10.offset2
-        =link_to(child, mobile_page_path(child.id), :class => 'page-link')
+  -if @page.parent
+    .container.page-parent
+      =link_to(@page.parent, mobile_page_path(@page.parent.id))
+  .container-fluid
+    -@page.children.each do |child|
+      .row-fluid
+        .span10.offset2
+          =link_to(child, mobile_page_path(child.id), :class => 'page-link')
 -else
-  =link_to(@page.parent, mobile_page_path(@page.parent_id), :class => 'page-link')
-  %h1=@page.title
-  -if @page.parent.try(:slug) == "news"
-    %p=@page.created_at.strftime("%e %B %Y")
-  -if @page.image
-    =image_for_with_retina(@page, "288x", :class => "mb-1")
-  =raw(@page.text)
+  .container-fluid
+    .row-fluid
+      -if @page.parent
+        =link_to(@page.parent, mobile_page_path(@page.parent_id), :class => 'page-link')
+      %h1=@page.title
+      -if @page.parent.try(:slug) == "news"
+        %p=@page.created_at.strftime("%e %B %Y")
+      -if @page.image
+        =image_for_with_retina(@page, "288x", :class => "mb-1")
+      =raw(@page.text)

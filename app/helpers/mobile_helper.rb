@@ -7,7 +7,7 @@ module MobileHelper
   
   def app_background_image_style
     if @page.try(:children).present?
-      "background-image: url(#{@page.app_background_image_url})"
+      "background-image: url(#{@page.app_background_image_url}); background-size: 100%;"
     end
   end
   
