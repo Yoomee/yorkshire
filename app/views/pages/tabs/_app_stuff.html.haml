@@ -1,9 +1,17 @@
 =form.inputs do
   =form.input :app_color, :label => 'Link colour for child pages', :input_html => {:placeholder => "e.g. #3DA1A1"}
   .radio.control-group.optional
-    %label.control-label App background image
+    %label.control-label Background image
     .choices.controls
       -[*(1..15)].each do |num|
         %label.choice.radio
           =form.radio_button :app_background, num, :id => ""
           =image_tag(Page::app_background_image_url(num), :width => 100)
+  .clearfix
+  .radio.control-group.optional
+    %label.control-label Header image
+    .choices.controls
+      -[*(1..15)].each do |num|
+        %label.choice.radio
+          =form.radio_button :app_header, num, :id => ""
+          =image_tag(Page::app_header_image_url(num), :width => 100)

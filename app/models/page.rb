@@ -31,7 +31,7 @@ class Page < ActiveRecord::Base
   end
   
   def app_header_image_url
-    Page::app_header_image_url(app_header)
+    Page::app_header_image_url(app_header || parent.app_header)
   end
   
 end
