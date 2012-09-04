@@ -8,6 +8,8 @@ module MobileHelper
   def active_tab_bar
     if controller_name == 'map'
       'map'
+    elsif controller_name == 'photos'
+      'photos'
     else
       return nil if @page.nil?
       @page.slug == 'app-welcome' ? 'home' : 'info'

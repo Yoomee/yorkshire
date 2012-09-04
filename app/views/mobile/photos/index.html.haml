@@ -1,0 +1,5 @@
+.container
+  .row
+    .photos
+      -@photos.each do |photo|
+        =link_to(image_for(photo, "75x75#"), mobile_photo_path(photo))

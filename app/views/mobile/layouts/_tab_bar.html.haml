@@ -1,6 +1,6 @@
 %ul#tab-bar.unstyled
   %li.home{:class => "#{active=='home' ? 'active' : ''}"}=link_to("Home", mobile_slug_path('app-welcome'))
   %li.info{:class => "#{active=='info' ? 'active' : ''}"}=link_to("Info", mobile_slug_path('mobile-app'))
-  %li.photos{:class => "#{active=='photos' ? 'active' : ''}"}=link_to("Photos", '#')
+  %li.photos{:class => "#{active=='photos' ? 'active' : ''}"}=link_to("Photos", mobile_photos_path)
   %li.map{:class => "#{active=='map' ? 'active' : ''}"}=link_to("Map", mobile_map_path)
   %li.favourites{:class => "#{active=='favourites' ? 'active' : ''}"}=link_to("Favourites", '#')

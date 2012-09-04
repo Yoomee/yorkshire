@@ -247,3 +247,16 @@ a.page-link:hover {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+/*========== Photos ==========*/
+
+body.controller_photos #main-wrapper {
+  background-color: black;
+}
+.photos {
+  margin-top: 4px;
+  margin-left: 4px;
+}
+.photos img {
+  margin-bottom: 4px;
+}

@@ -6,6 +6,7 @@ Yorkshire::Application.routes.draw do
 
   namespace :mobile do
     resources :pages, :only => [:show, :index]
+    resources :photos, :only => [:show, :index]
     match 'map', :to => 'map#index', :as => 'map'
   end
   
