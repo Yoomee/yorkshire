@@ -15,9 +15,19 @@
 -else
   .container-fluid
     .row-fluid
-      %h1=@page.title
-      -if @page.parent.try(:slug) == "news"
-        %p=@page.created_at.strftime("%e %B %Y")
-      -if @page.image
-        =image_for_with_retina(@page, "288x", :class => "mb-1")
-      =raw(@page.text)
+      .span12
+        %h1=@page.title
+        -if @page.parent.try(:slug) == "news"
+          %p=@page.created_at.strftime("%e %B %Y")
+        -if @page.image
+          =image_for_with_retina(@page, "288x", :class => "mb-1")
+        =raw(@page.text)
+    .row-fluid
+      .span12
+        .share-links
+          =link_to("#", :class => "btn span12 mb-1") do
+            %i.icon-share
+            Share this
+          =link_to("#", :class => "btn span12") do
+            %i.icon-star
+            Add to favourites

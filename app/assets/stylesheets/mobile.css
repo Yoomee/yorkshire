@@ -143,6 +143,9 @@ h1 {
   height: 411px;
   overflow-y: auto;
 }
+.page-show #main-wrapper {
+  padding-bottom: 20px;
+}
 .center {
   text-align: center;
 }
@@ -150,16 +153,16 @@ h1 {
   text-transform: none;
 }
 .mt-1 {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .mt-2 {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .mb-1 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .mb-2 {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 /*========== Tab bar ==========*/
@@ -193,7 +196,8 @@ h1 {
 
 h1,
 a.page-link,
-.page-parent {
+.page-parent,
+.share-links a {
   font-size: 21px;
 }
 .page-list .page-parent {
@@ -231,4 +235,8 @@ a.page-link,
 a.page-link:hover {
   text-decoration: none;
   color: white;
+}
+.share-links a {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
