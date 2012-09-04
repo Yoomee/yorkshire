@@ -7,6 +7,8 @@ Yorkshire::Application.routes.draw do
   namespace :mobile do
     resources :pages, :only => [:show, :index]
   end
+  
+  resources :photos
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

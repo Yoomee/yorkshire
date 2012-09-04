@@ -1,0 +1,9 @@
+=semantic_form_for(photo) do |form|
+  =form.inputs do
+    =form.input :retained_image, :as => :hidden
+    -if photo.image && photo.errors[:image].blank?
+      =image_for(photo, "220x")
+    =form.input :image, :as => :file
+    =form.input :caption
+  =form.buttons do
+    =form.commit_button "Save"

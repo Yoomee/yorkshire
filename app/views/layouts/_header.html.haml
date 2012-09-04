@@ -15,8 +15,12 @@
             %ul.dropdown-menu
               %li
                 =link_to("View profile", current_user)
-              %li
-                =link_to("Sitemap", pages_path)
+              -if can?(:index, Page)
+                %li
+                  =link_to("Sitemap", pages_path)
+              -if can?(:index, Photo)
+                %li
+                  =link_to("Photos", photos_path)
               %li
                 =link_to(sign_out_path, :method => :delete) do
                   %i.icon-signout

@@ -1,0 +1,11 @@
+.row
+  .span12
+    -if @photo.caption.present?
+      %h3=@photo.caption
+    =image_for(@photo, "700x")
+      
+-if can?(:edit, @photo)
+  .row.mt-2
+    .span12
+      =link_to("Edit photo", edit_photo_path(@photo), :class => "mr-1")
+      =link_to("Delete photo", @photo, :method => :delete, :confirm => "Are you sure?")
