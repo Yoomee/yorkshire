@@ -32,6 +32,9 @@ module MobileHelper
   end
   
   def app_link_offset(num)
+    until num <= 5
+      num = num -5
+    end
     [1, 3, 2, 2, 3, 2][num]
   end
   
