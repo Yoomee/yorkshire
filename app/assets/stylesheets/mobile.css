@@ -148,6 +148,7 @@ h1 {
   overflow-y: auto;
 }
 .page-show #main-wrapper {
+  height: 391px;  
   padding-bottom: 20px;
 }
 .center {
