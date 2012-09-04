@@ -6,7 +6,7 @@
       ="- #{@page_title}" if @page_title.present?
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }      
     =stylesheet_link_tag("simulator")
-    =javascript_include_tag("mobile")
+    =javascript_include_tag("simulator")
     =csrf_meta_tags
     =google_analytics_js
   -body_tag do
@@ -16,4 +16,6 @@
   .row-fluid
     .span12.center
       #simulator
-        %iframe{:src => mobile_page_path(Page.find_by_slug('app-welcome').try(:id)), :width => 320, :height => 460, :frameborder => 0, :scrolling => 'no'}
+        =image_tag('splash-screen.png', :id => 'splash-screen')
+        #simulator-iframe.hide
+          %iframe{:src => mobile_page_path(Page.find_by_slug('app-welcome').try(:id)), :width => 320, :height => 460, :frameborder => 0, :scrolling => 'no'}

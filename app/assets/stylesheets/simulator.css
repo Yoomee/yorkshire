@@ -1,6 +1,12 @@
 .center {
   text-align: center;
 }
+.hide {
+  display: none;
+}
+#splash-screen {
+  margin-top: -20px;
+}
 #simulator {
   width: 320px;
   height: 591px;
