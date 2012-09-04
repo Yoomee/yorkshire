@@ -11,9 +11,5 @@
     =csrf_meta_tags
     =yield :head
     =google_analytics_js
-  -body_tag do
-    -if @page_title
-      =render('mobile/layouts/nav')
-    .navbar-spacer
-    =yield_with_bootstrap(render_flash, :container_class => 'container-fluid', :row_class => 'row-fluid')
+  -body_tag(:style => app_background_image_style, :class => app_body_class) do
     =yield_with_bootstrap(yield, :container_class => 'container-fluid', :row_class => 'row-fluid')

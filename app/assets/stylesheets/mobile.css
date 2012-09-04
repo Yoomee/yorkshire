@@ -1475,3 +1475,20 @@ span.next-prev-link {
 #simulator #tab-bar li a[href="#collect"]{ background-position: -128px 0px;}
 #simulator #tab-bar li a[href="#me"]     { background-position: -192px 0px;}
 #simulator #tab-bar li a[href="#more"]   { background-position: -256px 0px;}
+
+
+/*========== Pages ==========*/
+
+.page-link {
+  padding: 10px 15px;
+  color: white;
+  background-color: #3DA1A1;
+  float: left;
+  font-size: 21px;
+  margin: 10px 0;  
+}
+body.page-list .page-link {
+	-moz-box-shadow:2px 2px 10px rgba(0,0,0,0.5), 0px 0px 8px rgba(0,0,0,0.1);
+  -webkit-box-shadow:2px 2px 10px rgba(0,0,0,0.5), 0px 0px 8px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), 0px 0px 8px rgba(0, 0, 0, 0.1)  
+}
