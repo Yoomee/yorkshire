@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate
   
-  AUTH_USERS = { "yorkshire" => "yorkshire123" }
+  AUTH_USERS = { "yorkshire" => "uni123" }
 
   private
   def authenticate
