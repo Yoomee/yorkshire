@@ -54,15 +54,18 @@
 
 /*========== Page app images ==========*/
 
-.tab-pane#app_images .choices {
+.tab-pane#app_stuff .choices {
   margin-top: 10px;
 }
-.tab-pane#app_images label.choice {
+.tab-pane#app_stuff label.choice {
   float: left;
   margin-right: 40px;
   padding: 0;
   height: 140px;
 }
-.tab-pane#app_images label.choice input {
+.tab-pane#app_stuff label.choice input {
   float: none;
+}
+.tab-pane#app_stuff .radio label.control-label {
+  margin-left: -18px;  
 }

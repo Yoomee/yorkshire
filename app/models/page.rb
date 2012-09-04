@@ -18,8 +18,22 @@ class Page < ActiveRecord::Base
     Page::app_background_image_url(app_background)
   end
   
+  def app_color
+    read_attribute(:app_color) || "#3DA1A1"
+  end
+  
+  def app_link_color
+    if parent.nil? || parent.slug == 'mobile-app'
+      app_color
+    else
+      parent.app_color
+    end
+  end
+  
   def app_header_image_url
     Page::app_header_image_url(app_header)
   end
   
 end
+
+Page::APP_COLORS = %w{#3DA1A1 #2B835D #6DAB56 #AA6836 #8F3E5E #8F57A0}

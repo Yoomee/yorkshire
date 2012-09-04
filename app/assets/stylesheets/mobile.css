@@ -211,14 +211,14 @@ h1 {
 
 h1,
 a.page-link,
-.page-parent a {
+.page-parent {
   font-size: 21px;
 }
 .page-list .page-parent {
   background: gray;
   background: rgba(0,0,0,0.4);
 }
-.page-list .page-parent a {
+.page-list .page-parent span {
   width: 100%;
   text-align: center;
   float: left;

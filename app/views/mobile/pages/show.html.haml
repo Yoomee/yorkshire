@@ -1,14 +1,16 @@
--parent = (@page.children.present? ? @page : @page.parent)
--if parent && parent.slug != 'mobile-app'
+-if @page.children.present? && @page.slug != 'mobile-app'
+  .container.page-parent
+    %span=@page
+-elsif parent = @page.parent
   .container.page-parent{:style => app_header_image_style}
-    =link_to(parent, mobile_page_path(parent.id))
+    =link_to(parent, mobile_page_path(parent.id), :style => "background-color:#{parent.app_link_color};")
     
 -if @page.children.present?
   .container-fluid
     -@page.children.each do |child|
       .row-fluid
         .span10.offset2
-          =link_to(child, mobile_page_path(child.id), :class => 'page-link')
+          =link_to(child, mobile_page_path(child.id), :class => 'page-link', :style => "background-color:#{child.app_link_color};")
 -else
   .container-fluid
     .row-fluid
