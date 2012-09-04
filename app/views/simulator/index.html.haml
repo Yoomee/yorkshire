@@ -1,0 +1,19 @@
+!!!5
+%html
+  %head
+    %title
+      =Settings.site_name
+      ="- #{@page_title}" if @page_title.present?
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }      
+    =stylesheet_link_tag("simulator")
+    =javascript_include_tag("mobile")
+    =csrf_meta_tags
+    =google_analytics_js
+  -body_tag do
+    =yield
+
+.container-fluid
+  .row-fluid
+    .span12.center
+      #simulator
+        %iframe{:src => mobile_page_path(Page.find_by_slug('mobile-app').try(:id)), :width => 320, :height => 460, :frameborder => 0, :scrolling => 'no'}

@@ -1,9 +1,10 @@
 Yorkshire::Application.routes.draw do
   
   root :to => 'home#index'
+  
+  match 'mobile' => "simulator#index"
 
   namespace :mobile do
-    root :to => "simulator#index"
     resources :pages, :only => [:show, :index]
   end
 

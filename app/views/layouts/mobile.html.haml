@@ -12,4 +12,7 @@
     =yield :head
     =google_analytics_js
   -body_tag(:style => app_background_image_style, :class => app_body_class) do
-    =yield
+    #main-wrapper
+      =yield
+    -unless controller_name.simulator?
+      =render('mobile/layouts/tab_bar', :active => active_tab_bar)
