@@ -1,7 +1,9 @@
+-parent = (@page.children.present? ? @page : @page.parent)
+-if parent && parent.slug != 'mobile-app'
+  .container.page-parent{:style => app_header_image_style}
+    =link_to(parent, mobile_page_path(parent.id))
+    
 -if @page.children.present?
-  -if @page.parent
-    .container.page-parent
-      =link_to(@page.parent, mobile_page_path(@page.parent.id))
   .container-fluid
     -@page.children.each do |child|
       .row-fluid
@@ -10,8 +12,6 @@
 -else
   .container-fluid
     .row-fluid
-      -if @page.parent
-        =link_to(@page.parent, mobile_page_path(@page.parent_id), :class => 'page-link')
       %h1=@page.title
       -if @page.parent.try(:slug) == "news"
         %p=@page.created_at.strftime("%e %B %Y")

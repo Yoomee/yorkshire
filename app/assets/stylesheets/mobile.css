@@ -1479,6 +1479,11 @@ span.next-prev-link {
 
 /*========== Pages ==========*/
 
+h1,
+a.page-link,
+.page-parent a {
+  font-size: 21px;
+}
 .page-list .page-parent {
   background: gray;
   background: rgba(0,0,0,0.4);
@@ -1491,24 +1496,27 @@ span.next-prev-link {
   color: white;
   opacity: 1;
 }
-.page-link {
+.page-link,
+.page-show .page-parent a {
   padding: 10px 15px;
   color: white;
   background-color: #3DA1A1;
+}
+.page-list .page-link {
   float: left;
   margin: 10px 0;  
-}
-.page-list .page-parent a,
-a.page-link {
-  font-size: 21px;
-}
-.page-list .page-parent a:hover,
-a.page-link:hover {
-  text-decoration: none;
-  color: white;
-}
-body.page-list .page-link {
 	-moz-box-shadow:2px 2px 10px rgba(0,0,0,0.5), 0px 0px 8px rgba(0,0,0,0.1);
   -webkit-box-shadow:2px 2px 10px rgba(0,0,0,0.5), 0px 0px 8px rgba(0,0,0,0.1);
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5), 0px 0px 8px rgba(0, 0, 0, 0.1)  
+}
+.page-show .page-parent {
+  height: 110px;
+}
+.page-show .page-parent a {
+  float: right;
+}
+.page-parent a:hover,
+a.page-link:hover {
+  text-decoration: none;
+  color: white;
 }

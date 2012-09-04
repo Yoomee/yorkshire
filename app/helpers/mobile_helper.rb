@@ -11,6 +11,12 @@ module MobileHelper
     end
   end
   
+  def app_header_image_style
+    if @page.try(:children).blank?
+      "background-image: url(#{@page.app_header_image_url}); background-size: cover;"
+    end
+  end
+  
   def app_body_class
     return nil if @page.nil?
     if @page.children.present?
