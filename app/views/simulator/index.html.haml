@@ -17,5 +17,5 @@
     .span12.center
       #simulator
         =image_tag('splash-screen.png', :id => 'splash-screen')
-        #simulator-iframe.hide
+        #simulator-iframe{:style => 'display:none'}
           %iframe{:src => mobile_page_path(Page.find_by_slug('app-welcome').try(:id)), :width => 320, :height => 460, :frameborder => 0, :scrolling => 'no'}
