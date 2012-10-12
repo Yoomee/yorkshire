@@ -118,12 +118,23 @@ input {
   font-size: 16px;
   line-height: 20px;
 }
+b {
+  font-size:18px;
+  font-weight:bold;
+  color:black;
+  -webkit-font-smoothing: antialiased;
+}
 h1,
 a.page-link,
 .page-parent,
 .share-links a {
   font-size: 21px;
+  font-weight:bold;
   color: black;  
+  -webkit-font-smoothing: antialiased;
+}
+h1 {
+  font-size:24px;
 }
 
 /*========== Structure ==========*/
@@ -185,9 +196,9 @@ h1 {
   background: url('/assets/tab-bar.png') no-repeat;
 }
 #tab-bar li {
-  height:49px;
-  width:64px;
-  float:left;
+  height: 49px;
+  width: 74px;
+  float: left;
 }
 #tab-bar li a {
   height:100%;
@@ -200,9 +211,9 @@ h1 {
   background-repeat:no-repeat;
 }
 #tab-bar li.home { background-position: 0px 0px;}
-#tab-bar li.info { background-position: -64px 0px;}
-#tab-bar li.photos { background-position: -128px 0px;}
-#tab-bar li.map { background-position: -192px 0px;}
+#tab-bar li.info { background-position: 0px 0px;}
+#tab-bar li.photos { background-position: -83px 0px;}
+#tab-bar li.map { background-position: -158px 0px;}
 #tab-bar li.favourites { background-position: -256px 0px;}
 
 /*========== Pages ==========*/
@@ -256,9 +267,18 @@ body.controller_photos #main-wrapper {
   background-color: black;
 }
 .photos {
-  margin-top: 4px;
+  margin-top: 0px;
   margin-left: 4px;
 }
 .photos img {
   margin-bottom: 4px;
 }
+
+/*========== University profile logos ==========*/
+/*I have hard coded these at the moment. Not ideal- a quick fix for now.*/
+
+.uni_logo_space {
+  
+}
+
+
