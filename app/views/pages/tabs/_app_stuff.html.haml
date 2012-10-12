@@ -11,7 +11,7 @@
   .radio.control-group.optional
     %label.control-label Header image
     .choices.controls
-      -[*(1..15)].each do |num|
+      -[*(1..23)].each do |num|
         %label.choice.radio
           =form.radio_button :app_header, num, :id => ""
           =image_tag(Page::app_header_image_url(num), :width => 100)
