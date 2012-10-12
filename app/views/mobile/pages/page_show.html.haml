@@ -8,11 +8,11 @@
 
 .container-fluid
   .row-fluid
-    .span12{:class => @page.view_name}
-      %h1=@page.title
-      -if @page.image
-        =image_for_with_retina(@page, "288x", :class => "mb-1")
-      .uni_logo_space  
+    .span12
+      .title-and-image-wrapper{:class => @page.view_name}
+        %h1.page-title=@page.title
+        -if @page.image
+          =image_for_with_retina(@page, "288x", :class => "mb-1")
       =raw(@page.text)
   -unless @page.slug == 'app-welcome'
     .row-fluid.mt-1

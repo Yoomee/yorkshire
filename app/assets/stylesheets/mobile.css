@@ -275,10 +275,12 @@ body.controller_photos #main-wrapper {
 }
 
 /*========== University profile logos ==========*/
-/*I have hard coded these at the moment. Not ideal- a quick fix for now.*/
-
-.uni_logo_space {
+.university .page-title {
+  display:none;
   
 }
-
-
+.university.title-and-image-wrapper img {
+  border-bottom: 2px solid #CCC;
+  padding-bottom: 20px;
+  margin: 20px 0;
+}
