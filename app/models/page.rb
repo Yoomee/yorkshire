@@ -13,7 +13,11 @@ class Page < ActiveRecord::Base
     def app_header_image_url(num)
       "/assets/header_#{num || 11}.jpg"
     end
-    
+
+    def view_names
+      %w{basic tiled list university}
+    end
+
   end
   
   def app_background_image_url
