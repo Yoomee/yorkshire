@@ -217,7 +217,10 @@ h1 {
 #tab-bar li.favourites { background-position: -256px 0px;}
 
 /*========== Pages ==========*/
-
+h1.page-title {
+  line-height:1;
+  margin: 20px 0 15px;
+}
 .page-list .page-parent {
   background: gray;
   background: rgba(0,0,0,0.4);
