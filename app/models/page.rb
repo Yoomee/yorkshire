@@ -2,7 +2,7 @@ class Page < ActiveRecord::Base
   
   include YmCms::Page
   
-  has_many :children, :class_name => "Page", :foreign_key => 'parent_id', :conditions => ["draft = ? AND slug != 'app-welcome'", false]
+  has_many :children, :class_name => "Page", :foreign_key => 'parent_id', :conditions => ["draft = ? AND slug != 'app-welcome'", false], :order => :position
 
   class << self
     
