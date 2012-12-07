@@ -37,8 +37,8 @@ gem "exception_notification"
 gem "country-select"
 gem "formtastic-bootstrap", :git => "git://github.com/cgunther/formtastic-bootstrap.git", :branch => "bootstrap-2"
 gem "whenever", :require => false
-gem "ym_core", "0.1.31"     #, :path => "~/Rails/Gems/ym_core"
-gem "ym_cms", "0.3.4"       #, :path => "~/Rails/Gems/ym_cms"
+gem "ym_core", "~>0.1.31"      #, :path => "~/Rails/Gems/ym_core"
+gem "ym_cms",  "~>0.3.4"       #, :path => "~/Rails/Gems/ym_cms"
 gem "ym_users"
 gem "ym_permalinks"
 
@@ -48,6 +48,7 @@ group :development do
   gem 'ruby-debug19'
   gem 'ym_tools'
   gem 'passenger'
+  gem "sqlite3"
 end
 group :development, :test do
   gem 'rspec-rails'
