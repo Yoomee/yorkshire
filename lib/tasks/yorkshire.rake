@@ -14,7 +14,7 @@ task :sqlite => :environment do
   db.execute2("DELETE FROM ZPAGE;")
   Page.published.where("slug!='app-welcome'").each do |page|
     puts page.id
-    db.execute2("INSERT INTO ZPAGE (Z_PK,Z_ENT,Z_OPT,ZPARENT,ZSLUG,ZPOSITION,ZCOLORR,ZCOLORG,ZCOLORB,ZVIEWNAME,ZBACKGROUNDNUMBER,ZHEADERNUMBER,ZIMAGEUID,ZTEXT,ZTITLE,ZLATITUDE,ZLONGITUDE) VALUES (#{page.id},1,1,#{page.parent_id.presence || 'null'},'#{quote_string(page.slug)}',#{page.position || 0},#{page.app_color.present? ? hex_to_rgb(page.app_color).join(','): 'null,null,null'},'#{quote_string(page.view_name.presence)}',#{page.app_background.presence || 'null'},#{page.app_header.presence || 'null'},'#{quote_string(page.image_uid)}','#{quote_string(page.text)}','#{quote_string(page.title)}',53.#{rand(10)},-1.#{rand(10)});")
+    db.execute2("INSERT INTO ZPAGE (Z_PK,Z_ENT,Z_OPT,ZPARENT,ZSLUG,ZPOSITION,ZCOLORR,ZCOLORG,ZCOLORB,ZVIEWNAME,ZBACKGROUNDNUMBER,ZHEADERNUMBER,ZIMAGEUID,ZTEXT,ZTITLE,ZLATITUDE,ZLONGITUDE) VALUES (#{page.id},1,1,#{page.parent_id.presence || 'null'},'#{quote_string(page.slug)}',#{page.position || 0},#{page.app_color.present? ? hex_to_rgb(page.app_color).join(','): 'null,null,null'},'#{quote_string(page.view_name.presence)}',#{page.app_background.presence || 'null'},#{page.app_header.presence || 'null'},'#{quote_string(page.image_uid)}','#{quote_string(page.text)}','#{quote_string(page.title)}',#{page.latitude.try(:strip) || 'null'},#{page.longitude.try(:strip) || 'null'});")
   end
   
   puts "Exporting photos."
@@ -23,8 +23,7 @@ task :sqlite => :environment do
     puts photo.id
     db.execute2("INSERT INTO ZPHOTO (Z_PK,Z_ENT,Z_OPT,ZIMAGEUID,ZCAPTION,ZPOSITION) VALUES (#{photo.id},1,1,'#{quote_string(photo.image_uid)}','#{quote_string(photo.caption)}',#{idx});")
   end
-  
-
+  system "cp ~/Rails/yorkshire/lib/StudyInYorkshire.sqlite ~/iOS/StudyInYorkshire/StudyInYorkshire"
 end
 
 def quote_string(s)
