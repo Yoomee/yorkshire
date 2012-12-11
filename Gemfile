@@ -41,6 +41,7 @@ gem "ym_core", "~>0.1.31"      #, :path => "~/Rails/Gems/ym_core"
 gem "ym_cms",  "~>0.3.4"       #, :path => "~/Rails/Gems/ym_cms"
 gem "ym_users"
 gem "ym_permalinks"
+gem "sqlite3"
 
 group :development do
   gem 'growl'
@@ -48,7 +49,6 @@ group :development do
   gem 'ruby-debug19'
   gem 'ym_tools'
   gem 'passenger'
-  gem "sqlite3"
 end
 group :development, :test do
   gem 'rspec-rails'
