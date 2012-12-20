@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   
+  include YmUsers::ApplicationController
+  
   protect_from_forgery
 
   before_filter :authenticate
