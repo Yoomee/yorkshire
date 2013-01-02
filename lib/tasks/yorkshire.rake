@@ -1,6 +1,6 @@
 require "sqlite3"
 
-task :export => :environment do 
+task :export_photos => :environment do 
   Photo.all.each do |photo|
     # Get in and out paths
     puts photo.caption
@@ -26,6 +26,18 @@ task :export => :environment do
   system("cp -r ~/Rails/yorkshire/ios_assets/2012 ~/iOS/StudyInYorkshire/StudyInYorkshire/assets")
 end
 
+task :uploads => :environment do
+  system("mkdir -p #{Rails.root}/ios_assets/media")
+  Page.all.each do |page|
+    page.text.scan(/<img src=\"([^\"]*)/).flatten.each do |path|
+      system("curl #{Settings.live_site_url}#{path} -o ios_assets/#{path}")
+      system("convert ios_assets/#{path} -resize 2048x2048\\> ios_assets/#{path}")
+    end
+  end
+  #system("rm -rf ~/iOS/StudyInYorkshire/StudyInYorkshire/assets/media")
+  #system("cp -r ~/Rails/yorkshire/ios_assets/media ~/iOS/StudyInYorkshire/StudyInYorkshire/assets")
+end
+
 task :download => :environment do
   puts "Downloading all missing images"
   User.all.each  {|u| YmCore::ImageDownloader::download_image_if_missing(u.image) if u.image_uid.present?}
@@ -36,20 +48,24 @@ end
 
 task :sqlite => :environment do
   db = SQLite3::Database.new("lib/StudyInYorkshire.sqlite")
-  puts "Exporting pages."
+  puts "Exporting pages..."
   db.execute2("DELETE FROM ZPAGE;")
   Page.published.where("slug!='app-welcome'").each do |page|
-    puts page.id
-    db.execute2("INSERT INTO ZPAGE (Z_PK,Z_ENT,Z_OPT,ZPARENT,ZSLUG,ZPOSITION,ZCOLORR,ZCOLORG,ZCOLORB,ZVIEWNAME,ZBACKGROUNDNUMBER,ZHEADERNUMBER,ZIMAGEUID,ZTEXT,ZTITLE,ZLATITUDE,ZLONGITUDE,ZFAVOURITE) VALUES (#{page.id},1,1,#{page.parent_id.presence || 'null'},'#{quote_string(page.slug)}',#{page.position || 0},#{page.app_color.present? ? hex_to_rgb(page.app_color).join(','): 'null,null,null'},'#{quote_string(page.view_name.presence)}',#{page.app_background.presence || 'null'},#{page.app_header.presence || 'null'},'#{quote_string(page.image_uid)}',?,'#{quote_string(page.title)}',#{page.latitude.try(:strip).presence || 'null'},#{page.longitude.try(:strip).presence || 'null'},0);",page.text)
+     db.execute2("INSERT INTO ZPAGE (Z_PK,Z_ENT,Z_OPT,ZPARENT,ZSLUG,ZPOSITION,ZCOLORR,ZCOLORG,ZCOLORB,ZVIEWNAME,ZBACKGROUNDNUMBER,ZHEADERNUMBER,ZIMAGEUID,ZTEXT,ZTITLE,ZLATITUDE,ZLONGITUDE,ZFAVOURITE) VALUES (#{page.id},1,1,#{page.parent_id.presence || 'null'},'#{quote_string(page.slug)}',#{page.position || 0},#{page.app_color.present? ? hex_to_rgb(page.app_color).join(','): 'null,null,null'},'#{quote_string(page.view_name.presence)}',#{page.app_background.presence || 'null'},#{page.app_header.presence || 'null'},'#{quote_string(page.image_uid)}',?,?,#{page.latitude.try(:strip).presence || 'null'},#{page.longitude.try(:strip).presence || 'null'},0);",page.text,page.title)
   end
   
-  puts "Exporting photos."
-  db.execute2("DELETE FROM ZPHOTO;")
-  Photo.all.each_with_index do |photo, idx|
-    puts photo.id
-    db.execute2("INSERT INTO ZPHOTO (Z_PK,Z_ENT,Z_OPT,ZIMAGEUID,ZCAPTION,ZPOSITION) VALUES (#{photo.id},1,1,'#{quote_string(photo.image_uid.sub(/\.[^\.]*$/,''))}','#{quote_string(photo.caption)}',#{idx});")
-  end
-  system "cp ~/Rails/yorkshire/lib/StudyInYorkshire.sqlite ~/iOS/StudyInYorkshire/StudyInYorkshire"
+  puts "Copying headers and backgrounds..."
+  system("rm -f ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Backgrounds/*")
+  system("cp ~/Rails/yorkshire/app/assets/images/background_*.jpg ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Backgrounds")
+  system("rm -f ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Headers/*")
+  system("cp ~/Rails/yorkshire/app/assets/images/header_*.jpg ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Headers")
+  
+ puts "Exporting photos."
+ db.execute2("DELETE FROM ZPHOTO;")
+ Photo.all.each_with_index do |photo, idx|
+   db.execute2("INSERT INTO ZPHOTO (Z_PK,Z_ENT,Z_OPT,ZIMAGEUID,ZCAPTION,ZPOSITION) VALUES (#{photo.id},1,1,'#{quote_string(photo.image_uid.sub(/\.[^\.]*$/,''))}','#{quote_string(photo.caption)}',#{idx});")
+ end
+ system "cp ~/Rails/yorkshire/lib/StudyInYorkshire.sqlite ~/iOS/StudyInYorkshire/StudyInYorkshire"
 end
 
 def quote_string(s)
