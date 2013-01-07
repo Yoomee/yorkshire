@@ -51,7 +51,7 @@ task :sqlite => :environment do
   puts "Exporting pages..."
   db.execute2("DELETE FROM ZPAGE;")
   Page.published.where("slug!='app-welcome'").each do |page|
-     db.execute2("INSERT INTO ZPAGE (Z_PK,Z_ENT,Z_OPT,ZPARENT,ZSLUG,ZPOSITION,ZCOLORR,ZCOLORG,ZCOLORB,ZVIEWNAME,ZBACKGROUNDNUMBER,ZHEADERNUMBER,ZIMAGEUID,ZTEXT,ZTITLE,ZLATITUDE,ZLONGITUDE,ZFAVOURITE) VALUES (#{page.id},1,1,#{page.parent_id.presence || 'null'},'#{quote_string(page.slug)}',#{page.position || 0},#{page.app_color.present? ? hex_to_rgb(page.app_color).join(','): 'null,null,null'},'#{quote_string(page.view_name.presence)}',#{page.app_background.presence || 'null'},#{page.app_header.presence || 'null'},'#{quote_string(page.image_uid)}',?,?,#{page.latitude.try(:strip).presence || 'null'},#{page.longitude.try(:strip).presence || 'null'},0);",page.text,page.title)
+     db.execute2("INSERT INTO ZPAGE (Z_PK,Z_ENT,Z_OPT,ZPARENT,ZSLUG,ZPOSITION,ZCOLORR,ZCOLORG,ZCOLORB,ZVIEWNAME,ZBACKGROUNDNUMBER,ZHEADERNUMBER,ZIMAGEUID,ZTEXT,ZTITLE,ZLATITUDE,ZLONGITUDE,ZFAVOURITE,ZPERMALINK) VALUES (#{page.id},1,1,#{page.parent_id.presence || 'null'},'#{quote_string(page.slug)}',#{page.position || 999},#{page.app_color.present? ? hex_to_rgb(page.app_color).join(','): 'null,null,null'},'#{quote_string(page.view_name.presence)}',#{page.app_background.presence || 'null'},#{page.app_header.presence || 'null'},'#{quote_string(page.image_uid)}',?,?,#{page.latitude.try(:strip).presence || 'null'},#{page.longitude.try(:strip).presence || 'null'},0,?);",page.text,page.title,page.permalink_path)
   end
   
   puts "Copying headers and backgrounds..."
