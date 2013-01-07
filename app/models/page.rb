@@ -11,7 +11,7 @@ class Page < ActiveRecord::Base
     end
     
     def app_header_image_url(num)
-      "/assets/header_#{num || 45}.jpg"
+      "/assets/header_#{num || 46}.jpg"
     end
 
     def view_names
