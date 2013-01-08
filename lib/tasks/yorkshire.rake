@@ -1,5 +1,12 @@
 require "sqlite3"
 
+task :export_all do
+  Rake::Task["sqlite"].invoke
+  Rake::Task["download"].invoke
+  Rake::Task["uploads"].invoke
+  Rake::Task["export_photos"].invoke
+end
+
 task :export_photos => :environment do 
   Photo.all.each do |photo|
     # Get in and out paths
@@ -30,12 +37,14 @@ task :uploads => :environment do
   system("mkdir -p #{Rails.root}/ios_assets/media")
   Page.all.each do |page|
     page.text.scan(/<img src=\"([^\"]*)/).flatten.each do |path|
-      system("curl #{Settings.live_site_url}#{path} -o ios_assets/#{path}")
-      system("convert ios_assets/#{path} -resize 2048x2048\\> ios_assets/#{path}")
+      unless File.exists?("./ios_assets/#{path}")
+        system("curl #{Settings.live_site_url}#{path} -o ios_assets/#{path}")
+        system("convert ios_assets/#{path} -resize 2048x2048\\> ios_assets/#{path}")
+      end
     end
   end
-  #system("rm -rf ~/iOS/StudyInYorkshire/StudyInYorkshire/assets/media")
-  #system("cp -r ~/Rails/yorkshire/ios_assets/media ~/iOS/StudyInYorkshire/StudyInYorkshire/assets")
+  system("rm -rf ~/iOS/StudyInYorkshire/StudyInYorkshire/assets/media")
+  system("cp -r ~/Rails/yorkshire/ios_assets/media ~/iOS/StudyInYorkshire/StudyInYorkshire/assets")
 end
 
 task :download => :environment do
