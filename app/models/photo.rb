@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
   
   def caption
     if image_uid =~ /_W2Y_/
-      "#{read_attribute(:caption)} - With thanks to Welcome to Yorkshire for allowing us to use their image"
+      "#{read_attribute(:caption)} -- With thanks to Welcome to Yorkshire for allowing us to use their image"
     else
       read_attribute(:caption)
     end
