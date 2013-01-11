@@ -7,6 +7,8 @@ class Ability
     
     # open ability
     
+    can :read, Page 
+    
     if user.try(:admin?)
       can :manage, :all      
       # admin ability
