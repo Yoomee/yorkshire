@@ -61,6 +61,11 @@ body {
 	max-width: 700px;
 }
 /*================= Header ================*/
+#header {
+  float: left;
+  width: 100%;
+  margin-bottom: 20px;
+}
 #logo {
   margin: 0;
 }
@@ -172,7 +177,31 @@ span.the-app-store {
 	padding: 0 10px;
   
 }
+/*========== list view ==========*/
+.menu {
+  margin: 0;
+}
+li.menu-item {
 
+  margin: 0;
+}
+.menu-item-link {
+	display: block;
+	float: left; 
+	margin-bottom: 20px;
+}
+.menu-item-link:hover {
+  text-decoration: none;
+}
+.page-link {
+  color: #fff;
+  padding: 10px 0;
+  float: left;
+  width: 100%;
+  text-align: center;
+  background-color: #3DA1A1;
+  
+}
 /*========== Page app images ==========*/
 
 .tab-pane#app_stuff .choices {
@@ -191,10 +220,3 @@ span.the-app-store {
   margin-left: -18px;  
 }
 
-a.page-link {
-  color: #fff;
-  padding: 10px;
-  float: left;
-  background-color: #3DA1A1;
-  
-}
