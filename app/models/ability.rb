@@ -7,7 +7,7 @@ class Ability
     
     # open ability
     
-    can :read, Page
+    can :show, Page
     can :read, Photo
     
     if user.try(:admin?)
