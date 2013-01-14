@@ -1,4 +1,17 @@
 .row
+  .span4
+    =link_to @photo.previous_photo do
+      %i.icon-circle-arrow-left
+      Prev
+  .span4
+    =link_to photos_path do
+      %i.icon-th
+      All
+  .span4
+    =link_to @photo.next_photo do
+      Next
+      %i.icon-circle-arrow-right
+.row
   .span12
     -if @photo.caption.present?
       %h3=@photo.caption

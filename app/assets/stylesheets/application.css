@@ -51,6 +51,9 @@
 .fade_in.fade_four {-webkit-animation-delay: 0, 0.9s;}
 .fade_in.fade_five {-webkit-animation-delay: 0, 1.2s;}
 .fade_in.fade_six {-webkit-animation-delay: 0, 1.5s;}
+
+/*========== Typography ==========*/
+
 /*========== Page app images ==========*/
 
 .tab-pane#app_stuff .choices {
@@ -67,4 +70,12 @@
 }
 .tab-pane#app_stuff .radio label.control-label {
   margin-left: -18px;  
+}
+
+a.page-link {
+  color: #fff;
+  padding: 10px;
+  float: left;
+  background-color: #3DA1A1;
+  
 }

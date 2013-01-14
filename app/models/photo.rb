@@ -14,7 +14,11 @@ class Photo < ActiveRecord::Base
   end
   
   def next_photo
-    Photo.where(['id > ?', id]).first
+    Photo.where(['id > ?', id]).first || Photo.first
+  end
+  
+  def previous_photo
+    Photo.where(['id > ?', id]).last || Photo.last
   end
   
 end
