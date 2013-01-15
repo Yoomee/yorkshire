@@ -1,13 +1,23 @@
-.span8.university-page
-  %h1=@page.title
-  %h2
-  -if @page.image
-    .row
-      .span8
-        =image_for(@page, "620x")
-  .row
-    .span8
-      =contentize(@page.text)
+-if @page.slug == 'app-welcome'
+  .container.page-parent{:style => app_header_image_style}
+    %span{:style => "background-color:#{@page.app_link_color};"}
+      =@page
+-elsif parent = @page.parent
+  .container.page-parent{:style => app_header_image_style}
+    .row-fluid
+      =link_to(parent, parent, :style => "background-color:#{parent.app_link_color};", :class=>"page-parent-link")
+.container
+  .row-fluid
+    .span12.page-text
+      .page-text-inner   
+        .title-and-image-wrapper{:class => @page.view_name}
+          %h1.hide.page-title=@page.title
+          -if @page.image
+            =image_for(@page, "620x")
+        =contentize(@page.text)
+
+
+  .row-fluid
     .span8
       =options_panel do
         =link_if_can("Edit page", [:edit, @page])

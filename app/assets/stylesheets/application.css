@@ -12,6 +12,7 @@
  *= require font-awesome
  *= require sticky-footer 
  *= require_self
+ *= require responsive
  
 */
 /*========== CSS3 magic (move to ym_core) ==========*/
@@ -53,9 +54,24 @@
 .fade_in.fade_six {-webkit-animation-delay: 0, 1.5s;}
 
 /*========== Typography ==========*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.page-parent-link,
+.page-link {
+	font-family: palatino;
+	font-weight: bold;
+}
+.page-link,
+.page-parent-link {
+  font-size: 18px;
+}
 /*================= Structure ================*/
 body {
-  background: #e8b173;
+  background: #e8b173 url(/assets/corkboard.jpg);
 }
 .container {
 	max-width: 700px;
@@ -111,7 +127,8 @@ a.app-store-link {
   
   width: 175px;
   padding: 10px 15px 5px;
-  margin: 40px 40px 0 0;
+  margin: 40px 30px 0 0;
+  height: 56px;
   
   box-shadow:0px 1px 1px rgba(0,0,0,0.3), 0px 0px 5px rgba(0,0,0,0.1);
   
@@ -149,6 +166,12 @@ span.the-app-store {
 .main-nav {
   background: #000;
   color: #fff;
+  
+  -webkit-box-shadow:1px 1px 6px rgba(0,0,0,0.4);
+  box-shadow:1px 1px 6px rgba(0,0,0,0.4);
+}
+#nav {
+  margin: 0;
 }
 .nav-item {
   color: #fff;
@@ -177,6 +200,7 @@ span.the-app-store {
 	padding: 0 10px;
   
 }
+
 /*========== list view ==========*/
 .menu {
   margin: 0;
@@ -189,6 +213,10 @@ li.menu-item {
 	display: block;
 	float: left; 
 	margin-bottom: 20px;
+	width: 97%;
+	
+	-webkit-box-shadow:1px 1px 6px rgba(0,0,0,0.4);
+  box-shadow:1px 1px 6px rgba(0,0,0,0.4);
 }
 .menu-item-link:hover {
   text-decoration: none;
@@ -201,8 +229,51 @@ li.menu-item {
   text-align: center;
   background-color: #3DA1A1;
   
+  
 }
-/*========== Page app images ==========*/
+/*========== Page  ==========*/
+.page-text {
+  background: #fff;
+  clear: both;
+  
+  -webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.4);
+  box-shadow:1px 1px 10px rgba(0,0,0,0.4);
+}
+.list-page-title {
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  padding: 10px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+.list-page-title h1{
+  color: #fff;
+  text-align: center;
+  font-size: 26px;
+  line-height: 1;
+  margin: 0;
+}
+
+.page-text-inner {
+  padding: 20px 40px;
+}
+.page-parent {
+  clear: both;
+  height: 200px;
+  
+  -webkit-box-shadow:1px 1px 10px rgba(0,0,0,0.4);
+  box-shadow:1px 1px 10px rgba(0,0,0,0.4);
+}
+.page-parent-link {
+  float: left;
+  color: #fff;
+  padding: 10px 20px;
+  background-color: #3DA1A1;
+}
+.page-parent-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
 
 .tab-pane#app_stuff .choices {
   margin-top: 10px;
@@ -219,4 +290,7 @@ li.menu-item {
 .tab-pane#app_stuff .radio label.control-label {
   margin-left: -18px;  
 }
-
+/*========== Footer  ==========*/
+.footer {
+  position: relative;
+}

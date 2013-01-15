@@ -4,28 +4,12 @@
       .span12.header-inner
         %h1#logo
           =link_to "Study at Universities in Yorkshire, UK", "/"
-        =link_to "#", :class=>"app-store-link" do
+        =link_to "https://itunes.apple.com/us/app/study-at-universities-in-yorkshire/id592172739?ls=1&mt=8", :class=>"app-store-link", :target=>"_blank" do
           %i.icon-mobile-phone
           %span.available-on
             Available on the
           %span.the-app-store
             App Store
-        %ul#user-links.unstyled
-          -if logged_in?
-            %li
-              =link_to(sign_out_path, :method => :delete) do
-                %i.icon-signout
-                =t(:logout)          
-            -if can?(:index, Page)
-              %li
-                =link_to("Sitemap", pages_path)
-            %li
-              =link_to("#", :class => "user-link") do
-                %i.icon-user
-                =current_user                
-
-          -else
-            %li=link_to("Login", sign_in_path, :class=>"user-link")    
         .clearfix      
 
     .row-fluid

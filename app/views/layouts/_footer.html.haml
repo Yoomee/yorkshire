@@ -5,3 +5,19 @@
         &copy; 2012
         =Settings.site_name
       =link_to("Yoomee", "http://www.yoomee.com", :id => "siteby", :target=>"_blank")
+      %ul#user-links.unstyled
+        -if logged_in?
+          %li
+            =link_to(sign_out_path, :method => :delete) do
+              %i.icon-signout
+              =t(:logout)          
+          -if can?(:index, Page)
+            %li
+              =link_to("Sitemap", pages_path)
+          %li
+            =link_to("#", :class => "user-link") do
+              %i.icon-user
+              =current_user                
+
+        -else
+          %li=link_to("Login", sign_in_path, :class=>"user-link")

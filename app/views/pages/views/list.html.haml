@@ -1,12 +1,17 @@
 .container
-  .row-fluid    
-    -@page.children.order('position').each_with_index do |child, index|
-      .span6
-        =link_to(child, :class=>"menu-item-link") do
-          .menu-item-image-wrap
-          =image_tag(child.app_header_image_url, :class=>"menu-item-image")
-          %span.page-link{:style => "background-color:#{child.app_link_color};"}
-            =child
+  .row-fluid
+    .list-page-title
+      %h1.page-title=@page.title
+  -@page.children.order('position').each_slice(2) do |pages|
+    .row-fluid.page-menu
+      -pages.each do |child|
+        .span6
+          =link_to(child, :class=>"menu-item-link") do
+            .menu-item-image-wrap
+            =image_tag(child.app_header_image_url, :class=>"menu-item-image")
+            %span.page-link{:style => "background-color:#{child.app_link_color};"}
+              =child
+  .row-fluid            
     .span8
       =options_panel do
         =link_if_can("Edit page", [:edit, @page])

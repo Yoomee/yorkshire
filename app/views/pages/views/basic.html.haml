@@ -4,13 +4,22 @@
       =@page
 -elsif parent = @page.parent
   .container.page-parent{:style => app_header_image_style}
-    =link_to(parent, parent, :style => "background-color:#{parent.app_link_color};")
+    .row-fluid
+      =link_to(parent, parent, :style => "background-color:#{parent.app_link_color};", :class=>"page-parent-link")
 
-.container-fluid
+.container
   .row-fluid
-    .span12
-      .title-and-image-wrapper{:class => @page.view_name}
-        %h1.page-title=@page.title
-        -if @page.image
-          =image_for_with_retina(@page, "288x", :class => "mb-1")
-      =raw(@page.text)
+    .span12.page-text
+      .page-text-inner   
+        .title-and-image-wrapper{:class => @page.view_name}
+          %h1.page-title=@page.title
+          -if @page.image
+            =image_for_with_retina(@page, "288x", :class => "mb-1")         
+        =raw(@page.text)
+  .row-fluid
+    .span8
+      =options_panel do
+        =link_if_can("Edit page", [:edit, @page])
+        =link_if_can("Delete page", [:destroy, @page], :confirm => "Are you sure?") unless @page.slug.present?
+        =link_if_can("New page", [:new, Page])
+        
