@@ -15,6 +15,13 @@
  *= require responsive
  
 */
+
+/*Hiding until app is live*/
+.page-menu, .main-nav.span12 {
+  display: none;
+}
+
+
 /*========== CSS3 magic (move to ym_core) ==========*/
 
 @-webkit-keyframes reset {
@@ -290,6 +297,7 @@ li.menu-item {
 .tab-pane#app_stuff .radio label.control-label {
   margin-left: -18px;  
 }
+
 /*========== Footer  ==========*/
 .footer {
   position: relative;
