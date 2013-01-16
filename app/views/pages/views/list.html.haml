@@ -1,7 +1,8 @@
 .container
-  .row-fluid
-    .list-page-title
-      %h1.page-title=@page.title
+  -unless @page.slug == "mobile-app"
+    .row-fluid
+      .list-page-title
+        %h1.page-title=@page.title
   -@page.children.order('position').each_slice(2) do |pages|
     .row-fluid.page-menu
       -pages.each do |child|

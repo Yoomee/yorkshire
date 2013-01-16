@@ -11,9 +11,11 @@ class ApplicationController < ActionController::Base
   private
   def authenticate
     return true unless Rails.env.production?
-    authenticate_or_request_with_http_basic do |username|
-      AUTH_USERS[username]
+    if authenticate_or_request_with_http_basic{|username| AUTH_USERS[username]}
+      session[:authorised] = true
+      return true
     end
+    false
   end
 
 end
