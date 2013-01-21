@@ -3,33 +3,32 @@
     .row-fluid
       .span12.header-inner
         %h1#logo
-          =link_to "Study at Universities in Yorkshire, UK", "/"
+          =link_to "Study at Universities in Yorkshire, UK", root_path
         =link_to "https://itunes.apple.com/us/app/study-at-universities-in-yorkshire/id592172739?ls=1&mt=8", :class=>"app-store-link", :target=>"_blank" do
           %i.icon-mobile-phone
           %span.available-on
             Available on the
           %span.the-app-store
             App Store
-        .clearfix      
-    -if session[:authorised]
-      .row-fluid
-        .main-nav.span12            
-          %ul#nav.unstyled
-            //%li.home{:class => "#{active=='home' ? 'active' : ''}"}=link_to("Home", mobile_slug_path('app-welcome'))
-            %li.info{:class => "#{active=='info' ? 'active' : ''}"}
-              =link_to root_path, :class=>"nav-item nav-item-home" do
-                %i.icon-home
-                %span
-                  Home                
-            %li.photos{:class => "#{active=='photos' ? 'active' : ''}"}
-              =link_to photos_path, :class=>"nav-item nav-item-photos" do
-                %i.icon-picture
-                %span
-                  Photos        
-            %li.map{:class => "#{active=='map' ? 'active' : ''}"}
-              =link_to "#", :class=>"nav-item nav-item-map" do
-                %i.icon-map-marker
-                %span
-                  Map
-          .clearfix         
+        .clearfix
+    .row-fluid
+      .main-nav.span12            
+        %ul#nav.unstyled
+          //%li.home{:class => "#{active=='home' ? 'active' : ''}"}=link_to("Home", mobile_slug_path('app-welcome'))
+          %li.info{:class => "#{active=='info' ? 'active' : ''}"}
+            =link_to root_path, :class=>"nav-item nav-item-home" do
+              %i.icon-home
+              %span
+                Home                
+          %li.photos{:class => "#{active=='photos' ? 'active' : ''}"}
+            =link_to photos_path, :class=>"nav-item nav-item-photos" do
+              %i.icon-picture
+              %span
+                Photos        
+          %li.map{:class => "#{active=='map' ? 'active' : ''}"}
+            =link_to map_path, :class=>"nav-item nav-item-map" do
+              %i.icon-map-marker
+              %span
+                Map
+        .clearfix         
 

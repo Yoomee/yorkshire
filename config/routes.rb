@@ -2,6 +2,7 @@ Yorkshire::Application.routes.draw do
   
   root :to => 'home#index'
   
+  match 'map' => "map#show"
   match 'mobile' => "simulator#index"
 
   namespace :mobile do

@@ -1,19 +1,16 @@
-.row
-  .span12
-    %h1 Photos
-    
-.row.mt-2
+-title "Photos"  
+.row-fluid.mt-2
   .span12
     -@photos.each_slice(4) do |photos|
-      .row.mb-2
+      .row-fluid.mb-2
         -photos.each do |photo|
-          .span3
-            =link_to(image_for(photo, "270x"), photo)
+          .span3.photo
+            =link_to(image_for(photo, "320x320#"), photo)
             -if photo.caption.present?
-              %p.mt-1=photo.caption
+              %p.photo-caption.mt-1=photo.caption
           
 -if can?(:new, Photo)
-  .row
+  .row-fluid
     .span12
       =options_panel do
         =link_to("+ Add a photo", new_photo_path, :class => "btn")

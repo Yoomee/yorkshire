@@ -1,24 +1,29 @@
-.row
-  .span4
-    =link_to @photo.previous_photo do
-      %i.icon-circle-arrow-left
-      Prev
-  .span4
-    =link_to photos_path do
-      %i.icon-th
-      All
-  .span4
-    =link_to @photo.next_photo do
-      Next
-      %i.icon-circle-arrow-right
-.row
+.row-fluid
   .span12
-    -if @photo.caption.present?
-      %h3=@photo.caption
+    .list-page-title
+      .row-fluid
+        .span4
+          =link_to @photo.previous_photo do
+            %i.icon-circle-arrow-left
+            Prev
+        .span4
+          =link_to photos_path do
+            %i.icon-th
+            All
+        .span4
+          =link_to @photo.next_photo do
+            Next
+            %i.icon-circle-arrow-right
+.row-fluid
+  .span12
     =image_for(@photo, "700x")
+    -if @photo.caption.present?
+      .list-page-title
+        %p.lead.mb-0=@photo.caption
+    
       
 -if can?(:edit, @photo)
-  .row.mt-2
+  .row-fluid.mt-2
     .span12
       =link_to("Edit photo", edit_photo_path(@photo), :class => "mr-1")
       =link_to("Delete photo", @photo, :method => :delete, :confirm => "Are you sure?")
