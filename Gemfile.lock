@@ -118,7 +118,7 @@ GEM
     html_truncator (0.3.0)
       nokogiri (~> 1.4)
     i18n (0.6.1)
-    jquery-rails (2.1.4)
+    jquery-rails (2.2.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.6)
@@ -270,7 +270,7 @@ GEM
       ym_core (~> 0.1.8)
       ym_permalinks (~> 0.1)
       ym_videos (~> 0.1)
-    ym_core (0.1.45)
+    ym_core (0.1.47)
       bootstrap-will_paginate (~> 0.0.6)
       dragonfly (~> 0.9.10)
       formtastic (~> 2.0.2)
@@ -328,7 +328,7 @@ DEPENDENCIES
   uglifier
   whenever
   ym_cms (~> 0.3.4)
-  ym_core (~> 0.1.31)
+  ym_core (~> 0.1.47)
   ym_permalinks
   ym_tools
   ym_users
