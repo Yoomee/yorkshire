@@ -13,7 +13,7 @@
         .title-and-image-wrapper{:class => @page.view_name}
           %h1.hide.page-title=@page.title
           -if @page.image
-            =image_for(@page, "620x")
+            =image_for(@page, "460x", :class => "menu-item-image mb-2")
         =contentize(@page.text)
 
 

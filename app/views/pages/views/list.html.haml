@@ -9,7 +9,9 @@
         .span6
           =link_to(child, :class=>"menu-item-link") do
             .menu-item-image-wrap
-              =image_for(page_for_header_image(child), "460x", :method => "header_image", :class=>"menu-item-image")
+              -page = page_for_header_image(child)
+              -if page.header_image
+                =image_for(page, "460x", :method => "header_image", :class=>"menu-item-image")
             %span.page-link{:style => "background-color:#{child.app_link_color};"}
               =child
   .row-fluid            
