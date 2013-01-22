@@ -11,10 +11,4 @@
           =form.radio_button :app_background, num, :id => ""
           =image_tag(Page::app_background_image_url(num), :width => 100)
   .clearfix
-  .radio.control-group.optional
-    %label.control-label Header image
-    .choices.controls
-      -[*(1..46)].each do |num|
-        %label.choice.radio
-          =form.radio_button :app_header, num, :id => ""
-          =image_tag(Page::app_header_image_url(num), :width => 100)
+  =form.input :header_image, :as => :image

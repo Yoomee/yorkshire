@@ -2,6 +2,8 @@ class Page < ActiveRecord::Base
   
   include YmCms::Page
   
+  image_accessor :header_image
+  
   has_many :children, :class_name => "Page", :foreign_key => 'parent_id', :conditions => ["draft = ? AND slug != 'app-welcome'", false], :order => :position
 
   class << self
@@ -37,7 +39,7 @@ class Page < ActiveRecord::Base
   end
   
   def app_header_image_url
-    Page::app_header_image_url(app_header || parent.app_header)
+    (header_image || parent.header_image).thumb("700x").url
   end
   
 end
