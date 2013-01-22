@@ -9,12 +9,7 @@
         .span6
           =link_to(child, :class=>"menu-item-link") do
             .menu-item-image-wrap
-              -if @page.slug == "mobile-app" && child.children.first.header_image
-                =image_for(child.children.first, "660x", :method => "header_image", :class=>"menu-item-image")
-              -elsif child.header_image.nil? && @page.slug == "universities"
-                =image_for(child.parent, "660x", :method => "header_image", :class=>"menu-item-image")
-              -elsif child.header_image
-                =image_for(child, "660x", :method => "header_image", :class=>"menu-item-image")
+              =image_for(page_for_header_image(child), "460x", :method => "header_image", :class=>"menu-item-image")
             %span.page-link{:style => "background-color:#{child.app_link_color};"}
               =child
   .row-fluid            

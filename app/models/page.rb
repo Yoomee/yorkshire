@@ -39,7 +39,7 @@ class Page < ActiveRecord::Base
   end
   
   def app_header_image_url
-    (header_image || parent.header_image).thumb("700x").url
+    (header_image || parent.header_image).thumb("460x").url
   end
   
 end

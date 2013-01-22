@@ -198,6 +198,11 @@ span.the-app-store {
 .menu {
   margin: 0;
 }
+
+img.menu-item-image {
+  width:100% !important;
+}
+
 li.menu-item {
 
   margin: 0;
