@@ -74,8 +74,8 @@ map-screen.png: map-screen-b6442cd4781453e770468a42d5adca73.png
 splash-screen.png: splash-screen-f510039b5c7366596627ddb52658212e.png
 tab-bar-active.png: tab-bar-active-debc2bed22f72db57406258f6675df7b.png
 tab-bar.png: tab-bar-8a27c116d695f5a5ae0417e95de953c2.png
-application.js: application-5ec2ef5f1707baf8096f4327fe7213a5.js
-mobile.js: mobile-c7e3820b19d4515f51c95e65f5e69ab6.js
+application.js: application-6b0c960467861f861d07f874cccc1a5a.js
+mobile.js: mobile-be8e64eb8525849cde28adbe682dbf54.js
 simulator.js: simulator-c84afdf5d011601a21360f8a538a8802.js
 app.css: app-fd5d78a30a5a4b4a116facd677d343f3.css
 application.css: application-dce1ae2864e57e5d9475042e7581a5d5.css
