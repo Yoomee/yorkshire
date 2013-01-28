@@ -1,1 +1,0 @@
-(function(){window.Simulator={hideSplashScreen:function(){return $("#splash-screen").hide(),$("#simulator-iframe").show()}},$(document).ready(function(){return setTimeout("Simulator.hideSplashScreen()",3e3)})}).call(this);

@@ -7,6 +7,10 @@
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     %meta{ :name => "apple-itunes-app", :content => "app-id=#{Settings.apple_itunes_app_id}" }
     =stylesheet_link_tag("application")
+    :plain
+      <!--[if IE 7]>
+        <link href="/assets/ie7.css" media="screen" rel="stylesheet" type="text/css" />
+      <![endif]-->
     =javascript_include_tag("application")
     =csrf_meta_tags
     =yield :head
