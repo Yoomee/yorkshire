@@ -1,6 +1,3 @@
-#= require jquery
-#= require jquery_ujs
-
 window.Simulator =
   hideSplashScreen: () ->
     $('#splash-screen').hide()

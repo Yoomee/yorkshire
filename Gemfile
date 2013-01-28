@@ -37,7 +37,7 @@ gem "exception_notification"
 gem "country-select"
 gem "formtastic-bootstrap", :git => "git://github.com/cgunther/formtastic-bootstrap.git", :branch => "bootstrap-2"
 gem "whenever", :require => false
-gem "ym_core", "~>0.1.47"      #, :path => "~/Rails/Gems/ym_core"
+gem "ym_core", "~>0.1.49"      #, :path => "~/Rails/Gems/ym_core"
 gem "ym_cms",  "~>0.3.4"       #, :path => "~/Rails/Gems/ym_cms"
 gem "ym_users"
 gem "ym_permalinks"

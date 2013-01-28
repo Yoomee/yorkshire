@@ -121,6 +121,9 @@ GEM
     jquery-rails (2.2.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (3.0.1)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.6)
     json_pure (1.7.5)
     launchy (2.0.5)
@@ -270,13 +273,14 @@ GEM
       ym_core (~> 0.1.8)
       ym_permalinks (~> 0.1)
       ym_videos (~> 0.1)
-    ym_core (0.1.48)
+    ym_core (0.1.49)
       bootstrap-will_paginate (~> 0.0.6)
       dragonfly (~> 0.9.10)
       formtastic (~> 2.0.2)
       haml
       html_truncator (~> 0.2)
       jquery-rails
+      jquery-ui-rails
       rails (~> 3.1.0)
       rails_config (~> 0.2.6)
       rinku
@@ -328,7 +332,7 @@ DEPENDENCIES
   uglifier
   whenever
   ym_cms (~> 0.3.4)
-  ym_core (~> 0.1.47)
+  ym_core (~> 0.1.49)
   ym_permalinks
   ym_tools
   ym_users
