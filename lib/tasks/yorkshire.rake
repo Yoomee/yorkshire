@@ -64,11 +64,9 @@ task :sqlite => :environment do
      db.execute2("INSERT INTO ZPAGE (Z_PK,Z_ENT,Z_OPT,ZPARENT,ZSLUG,ZPOSITION,ZCOLORR,ZCOLORG,ZCOLORB,ZVIEWNAME,ZBACKGROUNDNUMBER,ZHEADERIMAGEUID,ZIMAGEUID,ZTEXT,ZTITLE,ZLATITUDE,ZLONGITUDE,ZFAVOURITE,ZPERMALINK) VALUES (#{page.id},1,1,#{page.parent_id.presence || 'null'},'#{quote_string(page.slug)}',#{page.position || 999},#{page.app_color.present? ? hex_to_rgb(page.app_color).join(','): 'null,null,null'},'#{quote_string(page.view_name.presence)}',#{page.app_background.presence || 'null'},'#{quote_string(page.image_uid)}','#{quote_string(page.image_uid)}',?,?,#{page.latitude.try(:strip).presence || 'null'},#{page.longitude.try(:strip).presence || 'null'},0,?);",page.text,page.title,page.permalink_path)
   end
   
-  puts "Copying headers and backgrounds..."
+  puts "Copying backgrounds..."
   system("rm -f ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Backgrounds/*")
   system("cp ~/Rails/yorkshire/app/assets/images/background_*.jpg ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Backgrounds")
-  system("rm -f ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Headers/*")
-  system("cp ~/Rails/yorkshire/app/assets/images/header_*.jpg ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Headers")
   
  puts "Exporting photos."
  db.execute2("DELETE FROM ZPHOTO;")
