@@ -29,8 +29,34 @@ task :export_photos => :environment do
     # Thumb
     system("convert #{in_path} -resize 185x185^ #{out_path}-thumb.jpg")
   end
-  system("rm -rf ~/iOS/StudyInYorkshire/StudyInYorkshire/assets/2012")
-  system("cp -r ~/Rails/yorkshire/ios_assets/2012 ~/iOS/StudyInYorkshire/StudyInYorkshire/assets")
+  Page.all.each do |page|
+    # Get in and out paths
+    puts page.title
+    [:image, :header_image].each do |image_method|
+      if image = page.send(image_method)
+        in_path = image.path
+        parts = in_path.split('/')
+        filename = parts.pop
+        out_path = parts.join('/').sub('data/dragonfly/development','ios_assets')
+        system("mkdir -p #{out_path}")
+        out_path += "/#{in_path.split('/').last.sub(/\.[^\.]*$/,'')}"
+        # iPhone
+        system("convert #{in_path} -resize 480x480\\> #{out_path}.jpg")
+        # iPad
+        system("convert #{in_path} -resize 1024x1024\\> #{out_path}~ipad.jpg")
+        if image_method == :header_image
+          # iPhone @2x
+          system("convert #{in_path} -resize 960x960\\> #{out_path}@2x.jpg")
+          # iPad @2x
+          system("convert #{in_path} -resize 2048x2048\\> #{out_path}~ipad@2x.jpg")
+        end
+      end
+    end
+  end
+  %w{2012 2013}.each do |year|
+    system("rm -rf ~/iOS/StudyInYorkshire/StudyInYorkshire/assets/#{year}")
+    system("cp -r ~/Rails/yorkshire/ios_assets/#{year} ~/iOS/StudyInYorkshire/StudyInYorkshire/assets")
+  end
 end
 
 task :uploads => :environment do
@@ -61,7 +87,7 @@ task :sqlite => :environment do
   puts "Exporting pages..."
   db.execute2("DELETE FROM ZPAGE;")
   Page.published.where("slug!='app-welcome'").each do |page|
-     db.execute2("INSERT INTO ZPAGE (Z_PK,Z_ENT,Z_OPT,ZPARENT,ZSLUG,ZPOSITION,ZCOLORR,ZCOLORG,ZCOLORB,ZVIEWNAME,ZBACKGROUNDNUMBER,ZHEADERIMAGEUID,ZIMAGEUID,ZTEXT,ZTITLE,ZLATITUDE,ZLONGITUDE,ZFAVOURITE,ZPERMALINK) VALUES (#{page.id},1,1,#{page.parent_id.presence || 'null'},'#{quote_string(page.slug)}',#{page.position || 999},#{page.app_color.present? ? hex_to_rgb(page.app_color).join(','): 'null,null,null'},'#{quote_string(page.view_name.presence)}',#{page.app_background.presence || 'null'},'#{quote_string(page.image_uid)}','#{quote_string(page.image_uid)}',?,?,#{page.latitude.try(:strip).presence || 'null'},#{page.longitude.try(:strip).presence || 'null'},0,?);",page.text,page.title,page.permalink_path)
+     db.execute2("INSERT INTO ZPAGE (Z_PK,Z_ENT,Z_OPT,ZPARENT,ZSLUG,ZPOSITION,ZCOLORR,ZCOLORG,ZCOLORB,ZVIEWNAME,ZBACKGROUNDNUMBER,ZHEADERIMAGEUID,ZIMAGEUID,ZTEXT,ZTITLE,ZLATITUDE,ZLONGITUDE,ZFAVOURITE,ZPERMALINK) VALUES (#{page.id},1,1,#{page.parent_id.presence || 'null'},'#{quote_string(page.slug)}',#{page.position || 999},#{page.app_color.present? ? hex_to_rgb(page.app_color).join(','): 'null,null,null'},'#{quote_string(page.view_name.presence)}',#{page.app_background.presence || 'null'},'#{quote_string(jpgify(page.header_image_uid))}','#{quote_string(jpgify(page.image_uid))}',?,?,#{page.latitude.try(:strip).presence || 'null'},#{page.longitude.try(:strip).presence || 'null'},0,?);",page.text,page.title,page.permalink_path)
   end
   
   puts "Copying backgrounds..."
@@ -83,6 +109,11 @@ end
 
 def timestamp(time)
   "%9.5f" % time.to_f
+end
+
+def jpgify(path)
+  return nil if path.blank?
+  "#{path.sub(/\.[^\.]*$/,"")}.jpg"
 end
 
 def hex_to_rgb(hexcolor)
