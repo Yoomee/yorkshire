@@ -4,7 +4,7 @@ class Page < ActiveRecord::Base
   
   image_accessor :header_image
   
-  has_many :children, :class_name => "Page", :foreign_key => 'parent_id', :conditions => ["draft = ? AND slug != 'app-welcome'", false], :order => :position
+  has_many :children, :class_name => "Page", :foreign_key => 'parent_id', :conditions => ["draft = ? AND (slug IS NULL OR slug != 'app-welcome')", false], :order => :position
 
   class << self
     
