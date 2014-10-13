@@ -1,10 +1,15 @@
 .container
   .row-fluid
     .footer  
-      .span8
+      .span8.footer-wrap-thing
+        =link_to_slug :tour_de_yorkshire, :class=>"tour-de-yorkshire-link" do
+          %span.tour-text
+            Tour de Yorkshire 2015
+          %span.tour-bike          
+
         %ul.unstyled
           %li
-            &copy; 2012-2013
+            &copy; 2012-2014
             Yorkshire Universities
           -if logged_in?
             %li
