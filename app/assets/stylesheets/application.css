@@ -75,6 +75,10 @@ h5,
 .page-parent-link {
   font-size: 18px;
 }
+.page-title {
+  font-size: 32px;
+}
+
 /*================= Structure ================*/
 body {
   background: #e8b173 url(/assets/corkboard.jpg);
