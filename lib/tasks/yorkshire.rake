@@ -53,7 +53,7 @@ task :export_photos => :environment do
       end
     end
   end
-  %w{2012 2013}.each do |year|
+  (2012..Time.now.year).each do |year|
     system("rm -rf ~/iOS/StudyInYorkshire/StudyInYorkshire/assets/#{year}")
     system("cp -r ~/Rails/yorkshire/ios_assets/#{year} ~/iOS/StudyInYorkshire/StudyInYorkshire/assets")
   end
