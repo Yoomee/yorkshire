@@ -10,7 +10,6 @@ end
 task :export_photos => :environment do 
   Photo.all.each do |photo|
     # Get in and out paths
-    puts photo.caption
     in_path = photo.image.path
     parts = in_path.split('/')
     filename = parts.pop
@@ -31,7 +30,6 @@ task :export_photos => :environment do
   end
   Page.all.each do |page|
     # Get in and out paths
-    puts page.title
     [:image, :header_image].each do |image_method|
       if image = page.send(image_method)
         in_path = image.path
@@ -54,8 +52,8 @@ task :export_photos => :environment do
     end
   end
   (2012..Time.now.year).each do |year|
-    system("rm -rf ~/iOS/StudyInYorkshire/StudyInYorkshire/assets/#{year}")
-    system("cp -r ~/Rails/yorkshire/ios_assets/#{year} ~/iOS/StudyInYorkshire/StudyInYorkshire/assets")
+    system("rm -rf ~/iOS/yorkshire-ios/StudyInYorkshire/assets/#{year}")
+    system("cp -r ~/Rails/yorkshire/ios_assets/#{year} ~/iOS/yorkshire-ios/StudyInYorkshire/assets")
   end
 end
 
@@ -69,8 +67,8 @@ task :uploads => :environment do
       end
     end
   end
-  system("rm -rf ~/iOS/StudyInYorkshire/StudyInYorkshire/assets/media")
-  system("cp -r ~/Rails/yorkshire/ios_assets/media ~/iOS/StudyInYorkshire/StudyInYorkshire/assets")
+  system("rm -rf ~/iOS/yorkshire-ios/StudyInYorkshire/assets/media")
+  system("cp -r ~/Rails/yorkshire/ios_assets/media ~/iOS/yorkshire-ios/StudyInYorkshire/assets")
 end
 
 task :download => :environment do
@@ -91,15 +89,15 @@ task :sqlite => :environment do
   end
   
   puts "Copying backgrounds..."
-  system("rm -f ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Backgrounds/*")
-  system("cp ~/Rails/yorkshire/app/assets/images/background_*.jpg ~/iOS/StudyInYorkshire/StudyInYorkshire/Images/Backgrounds")
+  system("rm -f ~/iOS/yorkshire-ios/StudyInYorkshire/Images/Backgrounds/*")
+  system("cp ~/Rails/yorkshire/app/assets/images/background_*.jpg ~/iOS/yorkshire-ios/StudyInYorkshire/Images/Backgrounds")
   
- puts "Exporting photos."
+ puts "Exporting photos..."
  db.execute2("DELETE FROM ZPHOTO;")
  Photo.all.each_with_index do |photo, idx|
    db.execute2("INSERT INTO ZPHOTO (Z_PK,Z_ENT,Z_OPT,ZIMAGEUID,ZCAPTION,ZPOSITION) VALUES (#{photo.id},1,1,'#{quote_string(photo.image_uid.sub(/\.[^\.]*$/,''))}','#{quote_string(photo.caption)}',#{idx});")
  end
- system "cp ~/Rails/yorkshire/lib/StudyInYorkshire.sqlite ~/iOS/StudyInYorkshire/StudyInYorkshire"
+ system "cp ~/Rails/yorkshire/lib/StudyInYorkshire.sqlite ~/iOS/yorkshire-ios/StudyInYorkshire"
 end
 
 def quote_string(s)
